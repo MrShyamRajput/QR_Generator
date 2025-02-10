@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UPI to QR Code Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #6dd5ed, #2193b0);
+      color: #fff;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      text-align: center;
+      color: #8b2727;
+      display: inline;
+      transition: 0.2s ease-out;
+    }
+    h1:hover{
+      transform: scale(1.1);
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 20px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+
+    .options {
+      display: flex;
+      justify-content: space-around;
+      margin: 20px 0;
+    }
+
+    .option {
+      display: none;
+    }
+
+    .option-label {
+      background: #fff;
+      color: #2193b0;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .option-label:hover {
+      transform: scale(1.1);
+      background: #6dd5ed;
+    }
+
+    
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin: 15px 0;
+      border-radius: 5px;
+      border: none;
+      font-size: 1rem;
+    }
+
+    button {
+      background: #fff;
+      color: #2193b0;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    button:hover {
+      background: #6dd5ed;
+      transform: scale(1.1);
+    }
+    form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .h3{
+      display: flex;
+      color: #333333;
+      font-size: 15px;
+      justify-content: center;
+    
+    }
+  </style>
+</head>
+<body>
+  <form action="generate" method="POST">{% csrf_token %} 
+    <h1>UPI to QR Code Generator</h1>
+    <div class="container">
+      <div class="h3">
+        <h3>All in one QR code</h3>
+      </div>
+      <div class="options">
+        <label for="google-pay" class="option-label google-label">Google Pay</label>
+        <label for="phonepe" class="option-label phonepe-label">PhonePe</label>
+        <label for="paytm" class="option-label paytm-label">Paytm</label>
+      </div>
+  
+      <label for="upi-id">Enter UPI ID:</label>
+      <input type="text" id="upi-id" name="upi_id" placeholder="e.g., 1234567890@upi">
+      <button type="submit">Generate QR Code</button>
+    </div>
+
+  </form>
+</body>
+</html>
